@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Adds 1 match for the matches score for Team A when clicking the button.
+     * Adds 1 match for the matches count for Team A when clicking the button.
      */
     public void matchForTeamA(View v) {
         teamAMatches += 1;
@@ -53,12 +53,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Adds 1 match for the matches score for Team B when clicking the button.
+     * It ends a match, adds 1 to the matches count for the winning team (the team with more
+     * goals) and reset the goal scores for both teams. If there's a draw (same goals for both
+     * teams) it just reset the goal scores.
      */
-    public void matchForTeamB(View v) {
-        teamBMatches += 1;
+    public void endMatch(View v) {
+        if (teamAGoals > teamBGoals) {
+            teamAMatches += 1;
+        } else if (teamAGoals < teamBGoals) {
+            teamBMatches += 1;
+        } else {
+        }
+
+        teamAGoals = 0;
+        teamBGoals = 0;
+
+        displayGoalForTeamA(teamAGoals);
+        displayGoalForTeamB(teamBGoals);
+
+        displayMatchForTeamA(teamAMatches);
         displayMatchForTeamB(teamBMatches);
-        resetGoals(v);
+
     }
 
     /**
@@ -117,5 +132,14 @@ public class MainActivity extends AppCompatActivity {
     public void displayMatchForTeamB(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_matches_won);
         scoreView.setText(String.valueOf(score));
+    }
+
+    /**
+     * Adds 1 match for the matches count for Team B when clicking the button.
+     */
+    public void matchForTeamB(View v) {
+        teamBMatches += 1;
+        displayMatchForTeamB(teamBMatches);
+        resetGoals(v);
     }
 }

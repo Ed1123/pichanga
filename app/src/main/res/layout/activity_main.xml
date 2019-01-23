@@ -7,9 +7,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -105,7 +105,8 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="matchForTeamA"
                 android:text="Match won"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <View
@@ -208,7 +209,8 @@
                 android:layout_marginBottom="8dp"
                 android:onClick="matchForTeamB"
                 android:text="Match won"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"
+                android:visibility="gone" />
         </LinearLayout>
 
     </LinearLayout>
@@ -219,8 +221,8 @@
         android:layout_above="@+id/reset"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
-        android:onClick="resetGoals"
-        android:text="Draw" />
+        android:onClick="endMatch"
+        android:text="Match end" />
 
     <Button
         android:id="@+id/reset"
